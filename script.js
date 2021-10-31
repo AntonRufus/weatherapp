@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
 
     async function imgFetch(url) {
         const res = await fetch(url);
-        return (iconHtml.innerHTML = `<img src=${res.url} alt="image" width=\"200px\" />`);
+        iconHtml.innerHTML = `<img src=${res.url} alt="image" width=\"200px\" />`;
     }
 
     // fetch geolocation data
@@ -45,7 +45,7 @@ window.addEventListener('load', () => {
             const icon = res.weather[0].icon;
             const celc = +(data.temp - 273.15).toFixed(1);
             const feels_like = +(data.feels_like - 273.15).toFixed(1);
-            const iconApi = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+            const iconApi = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
             // fetch image
             imgFetch(iconApi);

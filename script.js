@@ -54,7 +54,9 @@ window.addEventListener('load', () => {
             degreeHtml.textContent = celc;
             descriptionHtml.textContent = description;
             hiddenHtml.innerHTML =
-                `Feels like: ${feels_like}` + '<br/>' + `Humidity: ${humidity}%` + '<br/>' + `Pressure: ${pressure}hPa`;
+                `<div class= 'hiddenHtml'>Feels like: ${feels_like} ℃</div>` +
+                `<div class= 'hiddenHtml'>Humidity: ${humidity} %</div>` +
+                `<div class= 'hiddenHtml'>Pressure: ${pressure} hPa</div>`;
             // });
         });
     });

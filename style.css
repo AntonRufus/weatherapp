@@ -76,11 +76,15 @@ sub {
 
 #mouse_over #hidden {
     margin-top: 10px;
-    margin-left: 3px;
+    margin-left: -1px;
     opacity: 0;
     font-size: 15px;
 }
 
 #mouse_over:hover #hidden {
     opacity: 1;
+}
+
+.hiddenHtml {
+    margin: 2px;
 }

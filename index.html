@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <title>Wheather APP</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="container__location">
+                <h1 class="container__location-title--city">city</h1>
+                <h3 class="container__location-title--country">country</h1>
+                <h5 class="container__location-title--continent">continent</h1>
+                <p class="container__location-icon">icon</p>
+            </div>
+            <div class="container__data" id='mouse_over'>
+                <div class="container__data-degree">
+                    <h2 class="container__data-degree--header">degree</h2>
+                    <sub>&#8451;</sub>
+                </div>
+                <div class="container__data-description">
+                    description
+                </div>
+                <div class="container__data-description--hidden" id='hidden'>
+                    hidden
+                </div>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </body>
+</html>

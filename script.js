@@ -16,6 +16,11 @@ window.addEventListener('load', () => {
         return fetch(url).then((res) => res.json());
     }
 
+    async function imgFetch(url) {
+        const res = await fetch(url);
+        return (iconHtml.innerHTML = `<img src=${res.url} alt="image" width=\"200px\" />`);
+    }
+
     // fetch geolocation data
     jsonFetch(`https://api.ipdata.co?api-key=${ipdataKey}`).then((responce) => {
         const lon = responce.longitude;
@@ -23,14 +28,14 @@ window.addEventListener('load', () => {
         const continent = responce.continent_name;
         const country = responce.country_name;
         const city = responce.city;
+        const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openweathermapKey}`;
+        //const proxy = 'https://cors-anywhere.herokuapp.com/';
+        //const api = `${proxy}https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openweathermapKey}`;
 
+        // thml text content
         cityHtml.textContent = city;
         countryHtml.textContent = country;
         continentHtml.textContent = continent;
-
-        //const proxy = 'https://cors-anywhere.herokuapp.com/';
-        //const api = `${proxy}https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openweathermapKey}`;
-        const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openweathermapKey}`;
 
         // fetch weather data
         jsonFetch(api).then((res) => {
@@ -40,20 +45,17 @@ window.addEventListener('load', () => {
             const icon = res.weather[0].icon;
             const celc = +(data.temp - 273.15).toFixed(1);
             const feels_like = +(data.feels_like - 273.15).toFixed(1);
-            const iconApi = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+            const iconApi = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
-            // fetch icon data + description section
-            fetch(iconApi).then((res) => {
-                iconHtml.innerHTML = `<img src=${res.url} alt="image" width=\"200px\" />`;
-                degreeHtml.textContent = celc;
-                descriptionHtml.textContent = description;
-                hiddenHtml.innerHTML =
-                    `Feels like: ${feels_like}` +
-                    '<br/>' +
-                    `Humidity: ${humidity}%` +
-                    '<br/>' +
-                    `Pressure: ${pressure}hPa`;
-            });
+            // fetch image
+            imgFetch(iconApi);
+
+            // thml text content
+            degreeHtml.textContent = celc;
+            descriptionHtml.textContent = description;
+            hiddenHtml.innerHTML =
+                `Feels like: ${feels_like}` + '<br/>' + `Humidity: ${humidity}%` + '<br/>' + `Pressure: ${pressure}hPa`;
+            // });
         });
     });
 });

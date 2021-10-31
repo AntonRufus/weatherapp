@@ -1,5 +1,5 @@
 body {
-    background: radial-gradient(circle at 100%, #000, #444 50%, #eee 55%, #333 100%);
+    background: radial-gradient(circle at 100%, #000, #2929ff 50%, #333 53%, #eee 55%, #57d5ff 60%, #333 100%);
     color: #fff;
     font-size: 150%;
 }
